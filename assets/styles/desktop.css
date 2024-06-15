@@ -1,0 +1,95 @@
+:root{
+  font-size: 62.5%;
+  --ff-principal: 'Inter', sans-serif;
+  --primary-color: #000000;
+  --secondary-color: #CCCCCC;
+  --icons-color: #DAFF01;
+  --btn-color: #9353FF;
+}
+
+@media (min-width: 1280px){
+  header #nav-desk ul li{
+    font-family: var(--ff-principal);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 2.3rem;
+  }
+
+  #form-desk .search-product-name-desk{
+    width: 17rem;
+  }
+
+  #form-desk .search-product-desk input{
+    font-family: var(--ff-principal);
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 1.9rem;
+  }
+
+  .categories,
+  .products{
+    padding: 4.8rem 11.5rem;
+  }
+
+  .categories .categories-container .categories-wrapper{
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .categories .categories-container .categories-wrapper .categorie-card{
+    width: 15rem;
+  }
+
+  .products .products-container h3{
+    line-height: 3.9rem;
+  }
+
+  .products-container .products-wrapper{
+    justify-content: space-between;
+  }
+
+  .products-wrapper .product-card{
+    width: 33rem;
+    height: 61.5rem;
+  }
+
+  .modal-product-wrapper{
+    display: grid;
+    /* place-content: center; */
+  }
+
+  .modal-product-wrapper .modal-product-wrapper-container{
+    margin: auto;
+    margin-top: 0;
+  }
+
+  .modal-product-wrapper .modal-product-header,
+  .modal-product-wrapper .modal-product-content{
+    width: 70rem;
+  }
+
+  .facilidades{
+    padding: 4rem 24.7rem;
+
+    overflow: hidden;
+  }
+
+  .facilidades .facili-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 3.2rem;
+  }
+
+  #form-newsletter{
+    align-items: center;
+  }
+
+  #form-newsletter .form-newsletter-content{
+    width: 72.9rem;
+  }
+}

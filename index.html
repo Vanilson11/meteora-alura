@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="assets/imgs/Favicon-48x.png" type="image/x-icon">
+  <title>Loja Meteora</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles/style.css">
+  <link rel="stylesheet" href="assets/styles/tablet.css">
+  <link rel="stylesheet" href="assets/styles/desktop.css">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+  <div id="app">
+    <header>
+      <div class="links">
+        <div class="logo">
+          <!-- colocar img como bakground -->
+        </div>
+        <nav id="nav-desk">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Nossas lojas</a></li>
+            <li><a href="#">Novidades</a></li>
+            <li><a href="#">Promoções</a></li>
+          </ul>
+        </nav>
+      </div>
+      <form id="form-desk">
+        <div class="search-product-name-desk">
+          <label for="product-name" class="sr-only">Digite o produto</label>
+          <input type="text" name="product-name" id="product-name" placeholder="Digite o produto" required />
+        </div>
+        <div class="search-product-desk">
+          <input type="submit" value="Search">
+        </div>
+      </form>
+      <div class="icons-menu-burguer">
+        <i class="ph-bold ph-list"></i>
+      </div>
+    </header>
+
+    <!-- nav mobile -->
+    <nav id="nav-mobile">
+      <div class="nav-mobile-icon">
+        <i class="ph-bold ph-x"></i>
+      </div>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Nossas lojas</a></li>
+        <li><a href="#">Novidades</a></li>
+        <li><a href="#">Promoções</a></li>
+      </ul>
+    </nav>
+
+    <!--form mobile-->
+    <form id="form-mobile">
+      <div class="form-mob-content">
+        <div class="search-product-name-mobile">
+          <label for="product-name-mob" class="sr-only">Digite o produto</label>
+          <input type="text" name="product-name-mob" id="product-name-mob" placeholder="Digite o produto" required />
+        </div>
+        <div class="search-product-mob">
+          <input type="submit" value="Search">
+        </div>
+      </div>
+    </form>
+
+    <!--carrossel-->
+    <section class="carrossel">
+      <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img class="img-fluid d-md-none" src="assets/imgs/banner1-mobile.png" alt="Modelo feminina vestindo blusa rosa fluorescente em fundo lilás.">
+            <img class="img-fluid d-none d-md-block d-xl-none" src="assets/imgs/banner1-tablet.png" alt="Modelo feminina vestindo blusa rosa fluorescente em fundo lilás.">
+            <img class="img-fluid d-none d-md-none d-xl-block" src="assets/imgs/banner1-desktop.png" alt="Modelo feminina vestindo blusa rosa fluorescente em fundo lilás.">
+      
+          </div>
+          <div class="carousel-item">
+            <img class="img-fluid d-md-none d-xl-none" src="assets/imgs/banner2-mobile.png" alt="Mulher negra vestindo roupa preta sentada num sofá preto e fundo atrás da cor rosa.">
+            <img class="img-fluid d-none d-md-block d-xl-none" src="assets/imgs/banner2-tablet.png" alt="Mulher negra vestindo roupa preta sentada num sofá preto e fundo atrás da cor rosa.">
+            <img class="img-fluid d-none d-xl-block" src="assets/imgs/banner2-desktop.png" alt="Mulher negra vestindo roupa preta sentada num sofá preto e fundo atrás da cor rosa.">
+            <div class="carousel-caption d-none d-md-block">
+              <h5 class="fs-1">COLEÇÃO ATEMPORAL</h5>
+              <p class="fs-4">Estilo e qualidade para durar. </p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img class="img-fluid d-md-none d-xl-none" src="assets/imgs/banner3-mobile.png" alt="Homem negro usando óculos, chapéu e roupas claras com um fundo laranja.">
+            <img class="img-fluid d-none d-md-block d-xl-none" src="assets/imgs/banner3-tablet.png" alt="Homem negro usando óculos, chapéu e roupas claras com um fundo laranja.">
+            <img class="img-fluid d-none d-xl-block" src="assets/imgs/banner3-desktop.png" alt="Homem negro usando óculos, chapéu e roupas claras com um fundo laranja.">
+            <div class="carousel-caption d-none d-md-block">
+              <h5 class="fs-1">COLEÇÃO ATEMPORAL</h5>
+              <p class="fs-4">Alto impacto visual, baixo impacto ambiental!</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </section>
+
+    <!--categories-->
+    <section class="categories">
+      <div class="categories-container">
+        <h3>Busque por categoria</h3>
+        <div class="categories-wrapper">
+          <div class="categorie-card">
+            <div class="categorie-img">
+              <img src="assets/imgs/Categorias/categorias-mobile/Categoria camiseta.png" alt="">
+            </div>
+            <h4>Camisetas</h4>
+          </div>
+          <div class="categorie-card">
+            <div class="categorie-img">
+              <img src="assets/imgs/Categorias/categorias-mobile/Categoria Bolsas.png" alt="">
+            </div>
+            <h4>Bolsas</h4>
+          </div>
+          <div class="categorie-card">
+            <div class="categorie-img">
+              <img src="assets/imgs/Categorias/categorias-mobile/Categoria calçados.png" alt="">
+            </div>
+            <h4>Calçados</h4>
+          </div>
+          <div class="categorie-card">
+            <div class="categorie-img">
+              <img src="assets/imgs/Categorias/categorias-mobile/Categoria calças.png" alt="">
+            </div>
+            <h4>Calças</h4>
+          </div>
+          <div class="categorie-card">
+            <div class="categorie-img">
+              <img src="assets/imgs/Categorias/categorias-mobile/Categoria Casacos.png" alt="">
+            </div>
+            <h4>Casacos</h4>
+          </div>
+          <div class="categorie-card">
+            <div class="categorie-img">
+              <img src="assets/imgs/Categorias/categorias-mobile/Categoria óculos.png" alt="">
+            </div>
+            <h4>Óculos</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--products-->
+    <section class="products">
+      <div class="products-container">
+        <h3>Pordutos que estão bombando!</h3>
+        <div class="products-wrapper">
+          <!-- Elementos adicionados via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!--facilidades-->
+    <section class="facilidades">
+      <h3>Conheça todas as nossas facilidades</h3>
+      <div class="facili-content">
+        <div class="facili-wrapper">
+          <div class="facili-icon">
+            <img src="assets/imgs/Icones/icones-mobile/x-diamond.png" alt="">
+          </div>
+          <div class="facili-text">
+            <h4>Pague pelo Pix</h4>
+            <p>Ganhe 5% OFF em pagamentos via PIX</p>
+          </div>
+        </div>
+        <div class="facili-wrapper">
+          <div class="facili-icon">
+            <img src="assets/imgs/Icones/icones-mobile/arrow-repeat.png" alt="">
+          </div>
+          <div class="facili-text">
+            <h4>Troca grátis</h4>
+            <p>Fique livre para trocar em até 30 dias.</p>
+          </div>
+        </div>
+        <div class="facili-wrapper">
+          <div class="facili-icon">
+            <img src="assets/imgs/Icones/icones-mobile/flower1.png" alt="">
+          </div>
+          <div class="facili-text">
+            <h4>Sustentabilidade</h4>
+            <p>Moda responsável, que respeita o meio ambiente.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <form id="form-newsletter">
+      <div class="form-newsletter-content">
+        <p>Quer receber nossas novidades, promoções exclusivas e 10% OFF na primeira compra? Cadastre-se!</p>
+        <div class="newsletter-data">
+          <div class="newsletter-email">
+            <label for="user-email" class="sr-only">Digite o produto</label>
+            <input type="text" name="user-email" id="user-email" placeholder="Digite seu e-mail" required />
+          </div>
+          <div class="newsletter-submit">
+            <input type="submit" value="Enviar">
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <footer>
+      <p>2023 © Desenvolvido por Alura |</p>
+      <p>Projeto fictício sem fins comerciais.</p>
+    </footer>
+
+    <div class="modal-product-wrapper">
+      <div class="modal-product-wrapper-container">
+        <div class="modal-product-header">
+          <div class="header-content">
+            <div class="check-circle">
+              <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 30.5C8.26801 30.5 2 24.232 2 16.5C2 8.76801 8.26801 2.5 16 2.5C23.732 2.5 30 8.76801 30 16.5C30 24.232 23.732 30.5 16 30.5ZM16 32.5C24.8366 32.5 32 25.3366 32 16.5C32 7.66344 24.8366 0.5 16 0.5C7.16344 0.5 0 7.66344 0 16.5C0 25.3366 7.16344 32.5 16 32.5Z" fill="#DAFF01"/>
+                <path d="M21.9393 10.4393C21.9252 10.4535 21.9119 10.4685 21.8995 10.4842L14.9548 19.3335L10.7678 15.1464C10.182 14.5607 9.23222 14.5607 8.64643 15.1464C8.06065 15.7322 8.06065 16.682 8.64643 17.2678L13.9393 22.5607C14.5251 23.1464 15.4749 23.1464 16.0606 22.5607C16.0737 22.5476 16.086 22.5339 16.0975 22.5195L24.0819 12.5389C24.6463 11.9516 24.6392 11.0179 24.0606 10.4393C23.4749 9.85355 22.5251 9.85355 21.9393 10.4393Z" fill="#DAFF01"/>
+                </svg>
+            </div>
+            <span class="header-title">Confira detalhes sobre o produto</span>
+          </div>
+          <button class="close-modal">
+            <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M15.0001 1.50003C14.4479 0.947724 13.5524 0.947671 13.0001 1.49991L7.99929 6.5L2.99982 1.50009C2.44755 0.947769 1.55209 0.947769 0.999823 1.50009C0.447622 2.05234 0.447622 2.94766 0.999823 3.49991L5.99947 8.5L0.999823 13.5001C0.447622 14.0523 0.447622 14.9477 0.999823 15.4999C1.55209 16.0522 2.44755 16.0522 2.99982 15.4999L7.99929 10.5L13.0001 15.5001C13.5524 16.0523 14.4479 16.0523 15.0001 15.5C15.5524 14.9477 15.5524 14.0523 15.0001 13.5L10.0005 8.5L15.0001 3.49997C15.5524 2.94769 15.5524 2.05231 15.0001 1.50003Z" fill="#6C757D"/>
+              </svg>
+        
+          </button>
+        </div>
+        <div class="modal-product-content">
+          <!-- Elementos adicionados via JS -->
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-notification">
+      <div class="modal-notification-header">
+        <div class="notification-header-content">
+          <div class="check-circle">
+            <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16 30.5C8.26801 30.5 2 24.232 2 16.5C2 8.76801 8.26801 2.5 16 2.5C23.732 2.5 30 8.76801 30 16.5C30 24.232 23.732 30.5 16 30.5ZM16 32.5C24.8366 32.5 32 25.3366 32 16.5C32 7.66344 24.8366 0.5 16 0.5C7.16344 0.5 0 7.66344 0 16.5C0 25.3366 7.16344 32.5 16 32.5Z" fill="#DAFF01"/>
+              <path d="M21.9393 10.4393C21.9252 10.4535 21.9119 10.4685 21.8995 10.4842L14.9548 19.3335L10.7678 15.1464C10.182 14.5607 9.23222 14.5607 8.64643 15.1464C8.06065 15.7322 8.06065 16.682 8.64643 17.2678L13.9393 22.5607C14.5251 23.1464 15.4749 23.1464 16.0606 22.5607C16.0737 22.5476 16.086 22.5339 16.0975 22.5195L24.0819 12.5389C24.6463 11.9516 24.6392 11.0179 24.0606 10.4393C23.4749 9.85355 22.5251 9.85355 21.9393 10.4393Z" fill="#DAFF01"/>
+              </svg>
+          </div>
+          <span class="header-title">E-mail cadastrado com sucesso!</span>
+        </div>
+        <button class="close-modal-notification">
+          <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M15.0001 1.50003C14.4479 0.947724 13.5524 0.947671 13.0001 1.49991L7.99929 6.5L2.99982 1.50009C2.44755 0.947769 1.55209 0.947769 0.999823 1.50009C0.447622 2.05234 0.447622 2.94766 0.999823 3.49991L5.99947 8.5L0.999823 13.5001C0.447622 14.0523 0.447622 14.9477 0.999823 15.4999C1.55209 16.0522 2.44755 16.0522 2.99982 15.4999L7.99929 10.5L13.0001 15.5001C13.5524 16.0523 14.4479 16.0523 15.0001 15.5C15.5524 14.9477 15.5524 14.0523 15.0001 13.5L10.0005 8.5L15.0001 3.49997C15.5524 2.94769 15.5524 2.05231 15.0001 1.50003Z" fill="#6C757D"/>
+            </svg>
+            
+        </button>
+      </div>
+      <div class="modal-notification-content">
+        <p>Em breve você receberá novidades exclusivas da Meteora.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script type="module" src="src/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+:root{
+  font-size: 62.5%;
+  --ff-principal: 'Inter', sans-serif;
+  --primary-color: #000000;
+  --secondary-color: #CCCCCC;
+  --icons-color: #DAFF01;
+  --btn-color: #9353FF;
+}
+
+@media (min-width: 768px) {
+  #form-mobile{
+    display: none;
+  }
+  
+  header #nav-desk,
+  header #form-desk{
+    display: flex;
+  }
+
+  header .icons-menu-burguer{
+    display: none;
+  }
+
+  header #nav-desk{
+    justify-content: center;
+    align-items: center;
+  }
+
+  header #nav-desk ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+
+    padding: 0;
+    margin-bottom: 0;
+    list-style: none;
+  }
+
+  header #nav-desk ul li{
+    font-weight: 400;
+    font-size: 1.3rem;
+    line-height: 2rem;
+  }
+
+  header #nav-desk ul li a{
+    text-decoration: none;
+    color: #FFF;
+  }
+
+  header #nav-desk ul li a:hover{
+    color: var(--icons-color);
+  }
+
+  header #form-desk{
+    justify-content: center;
+    align-items: center;
+    gap: 1.6rem;
+  }
+
+  #form-desk .search-product-name-desk{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 14.5rem;
+    position: relative;
+  }
+
+  #form-desk .search-product-name-desk input{
+    width: 100%;
+    padding: 1.1rem 1.2rem;
+
+    border: none;
+  }
+
+  #form-desk .search-product-name-desk input::placeholder{
+    font-family: var(--ff-principal);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.3rem;
+    line-height: 2rem;
+
+    color: #6C757D;
+  }
+
+  #form-desk .search-product-name-desk input:focus{
+    outline: 1px solid var(--icons-color);
+  }
+
+  #form-desk .search-product-desk input{
+    background: transparent;
+    color: #FFF;
+
+    font-family: var(--ff-principal);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.3rem;
+    line-height: 2rem;
+
+    padding: 1.1rem 1.2rem;
+
+    border: 1px solid #FFF;
+
+    cursor: pointer;
+  }
+
+  #form-desk .search-product-desk input:hover{
+    background: #FFF;
+    color: var(--primary-color);
+
+    transition: all .2s ease-out;
+  }
+  
+  .categories{
+    padding: 4rem;
+  }
+
+  .categories .categories-container .categories-wrapper{
+    justify-content: space-between;
+  }
+
+  .categories .categories-container .categories-wrapper .categorie-card{
+    width: 20.9rem;
+    height: 19.2rem;
+  }
+
+  .products{
+    padding: 4.5rem 3.9rem;
+  }
+
+  .products-container .products-wrapper{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .products-wrapper .product-card{
+    width: 33rem;
+    height: 60.2rem;
+  }
+
+  .modal-product-wrapper-container{
+    height: auto;
+  }
+
+  .modal-product-wrapper .modal-product-content{
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .facilidades{
+    gap: 4rem;
+    padding: 4rem 10.1rem;
+  }
+
+  .facilidades h3{
+    font-size: 3.2rem;
+    line-height: 3.9rem;
+  }
+
+  .facilidades .facili-content{
+    align-items: center;
+  }
+
+  .facili-content .facili-wrapper{
+    width: 30.4rem;
+  }
+
+  #form-newsletter{
+    padding: 3.9rem;
+  }
+
+  #form-newsletter .form-newsletter-content{
+    align-items: center;
+    
+    padding: 4rem 6rem;
+  }
+
+  .form-newsletter-content p{
+    font-size: 2rem;
+    line-height: 2.4rem;
+  }
+
+  .form-newsletter-content .newsletter-data{
+    justify-content: center;
+    align-items: center;
+    width: 44.1rem;
+  }
+
+  footer{
+    display: flex;
+    flex-direction: row;
+    gap: .3rem;
+  }
+}
+
