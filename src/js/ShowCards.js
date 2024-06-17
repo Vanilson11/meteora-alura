@@ -10,7 +10,7 @@ export class ShowCards{
   static addItemHtml(cardsContainer){
     data.forEach(item => {
       cardsContainer.innerHTML += `
-        <div class="product-card">
+        <div class="product-card hidden">
             <div class="product-img">
               <img src="${item.img}" alt="">
             </div>

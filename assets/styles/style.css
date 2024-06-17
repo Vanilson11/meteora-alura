@@ -21,6 +21,49 @@ body{
   /* position: relative; */
 }
 
+
+
+/*animação de scroll*/
+.hidden{
+  opacity: 0;
+  filter: blur(1.5rem);
+  transform: translateX(-100%);
+  transition: all 1s;
+}
+
+.show{
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
+  transition: all 1s;
+}
+
+.products-container .products-wrapper :nth-child(2),
+.categories-container .categories-wrapper :nth-child(2){
+  transition-delay: 400ms;
+}
+
+.products-container .products-wrapper :nth-child(3),
+.categories-container .categories-wrapper :nth-child(3){
+  transition-delay: 450ms;
+}
+
+.products-container .products-wrapper :nth-child(4),
+.categories-container .categories-wrapper :nth-child(4){
+  transition-delay: 500ms;
+}
+
+.products-container .products-wrapper :nth-child(5),
+.categories-container .categories-wrapper :nth-child(5){
+  transition-delay: 550ms;
+}
+
+.products-container .products-wrapper :nth-child(6),
+.categories-container .categories-wrapper :nth-child(6){
+  transition-delay: 600ms;
+}
+/*Fim animação scroll*/
+
 .sr-only{
   position: absolute;
   width: 1px;
