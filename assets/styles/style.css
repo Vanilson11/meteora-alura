@@ -28,39 +28,39 @@ body{
   opacity: 0;
   filter: blur(1.5rem);
   transform: translateX(-100%);
-  transition: all 1s;
+  transition: all .7s;
 }
 
 .show{
   opacity: 1;
   filter: blur(0);
   transform: translateX(0);
-  transition: all 1s;
+  transition: all .7s;
 }
 
 .products-container .products-wrapper :nth-child(2),
 .categories-container .categories-wrapper :nth-child(2){
-  transition-delay: 400ms;
+  transition-delay: 100ms;
 }
 
 .products-container .products-wrapper :nth-child(3),
 .categories-container .categories-wrapper :nth-child(3){
-  transition-delay: 450ms;
+  transition-delay: 150ms;
 }
 
 .products-container .products-wrapper :nth-child(4),
 .categories-container .categories-wrapper :nth-child(4){
-  transition-delay: 500ms;
+  transition-delay: 200ms;
 }
 
 .products-container .products-wrapper :nth-child(5),
 .categories-container .categories-wrapper :nth-child(5){
-  transition-delay: 550ms;
+  transition-delay: 250ms;
 }
 
 .products-container .products-wrapper :nth-child(6),
 .categories-container .categories-wrapper :nth-child(6){
-  transition-delay: 600ms;
+  transition-delay: 300ms;
 }
 /*Fim animação scroll*/
 

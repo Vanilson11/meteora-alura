@@ -8,6 +8,9 @@
 }
 
 @media (min-width: 1280px){
+  .carrossel{
+    margin-bottom: 12rem;
+  }
   header #nav-desk ul li{
     font-family: var(--ff-principal);
     font-style: normal;
