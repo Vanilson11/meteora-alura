@@ -37,15 +37,15 @@ export class ShowModal{
             <legend>Cores:</legend>
             <div class="input-color-wrapper">
               <div class="color">
-                <input type="radio" name="inColor" id="light-blue" required/>
+                <input type="radio" name="inColor" id="inData" data-input="Azul claro" required/>
                 <label for="light-blue">Azul claro</label>
               </div>
               <div class="color">
-                <input type="radio" name="inColor" id="white" required/>
+                <input type="radio" name="inColor" id="inData" data-input="Offwhite" required/>
                 <label for="white">Offwhite</label>
               </div>
               <div class="color">
-                <input type="radio" name="inColor" id="black" required/>
+                <input type="radio" name="inColor" id="inData" data-input="Preto" required/>
                 <label for="black">Preto</label>
               </div>
             </div>
@@ -54,31 +54,38 @@ export class ShowModal{
             <legend>Tamanho: </legend>
             <div class="input-size-wrapper">
               <div class="size">
-                <input type="radio" name="inSize" id="size-P" required/>
+                <input type="radio" name="inSize" id="inData" data-input="P" required/>
                 <label for="size-P">P</label>
               </div>
               <div class="size">
-                <input type="radio" name="inSize" id="size-PP" required/>
+                <input type="radio" name="inSize" id="inData" data-input="PP" required/>
                 <label for="size-PP">PP</label>
               </div>
               <div class="size">
-                <input type="radio" name="inSize" id="size-M" required/>
+                <input type="radio" name="inSize" id="inData" data-input="M" required/>
                 <label for="size-M">M</label>
               </div>
               <div class="size">
-                <input type="radio" name="inSize" id="size-G" required/>
+                <input type="radio" name="inSize" id="inData" data-input="G" required/>
                 <label for="size-G">G</label>
               </div>
               <div class="size">
-                <input type="radio" name="inSize" id="size-GG" required/>
+                <input type="radio" name="inSize" id="inData" data-input="GG" required/>
                 <label for="size-GG">GG</label>
               </div>
             </div>
           </fieldset>
-          <input type="submit" value="Adicionar à sacola">
+          <input 
+            class="btn-send"
+            type="submit" 
+            value="Comprar agora"
+            data-name="${btnTarget.dataset.name}"
+            data-price="${btnTarget.dataset.price}"
+          />
         </form>
       </div>
     `;
+    //sendPedido();
   }
 
   static closeModalProduct(){

@@ -1,6 +1,7 @@
 import { MenuBurguer } from "./js/MenuBurguer.js";
 import { ShowModal } from "./js/ShowModal.js";
 import { ShowCards } from "./js/ShowCards.js";
+import { SendPedido } from "./js/SendPedido.js";
 
 MenuBurguer.btnOpenMenuBurguer();
 MenuBurguer.closeMenuBurguer();
@@ -23,3 +24,6 @@ const myObserver = new IntersectionObserver((entries) => {
 });
 
 elements.forEach(element => myObserver.observe(element));
+
+const newPedido = new SendPedido();
+newPedido.setEvent();
