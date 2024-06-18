@@ -58,5 +58,7 @@ export class SendPedido{
     const phone = "98981789862";
 
     window.open(`https://wa.me/${phone}?text=${messageUrl}`, "_blank");
+
+    this.item = [];
   }
 }
