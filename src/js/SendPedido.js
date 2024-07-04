@@ -55,7 +55,7 @@ export class SendPedido{
     const headMessage = encodeURIComponent("Olá, eu gostaria de realizar o seguinte pedido: ");
     const bodyMessage = encodeURIComponent(message);
     const messageUrl = headMessage + bodyMessage;
-    const phone = "98981789862";
+    const phone = "98991771920";
 
     window.open(`https://wa.me/${phone}?text=${messageUrl}`, "_blank");
 
