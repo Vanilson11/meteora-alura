@@ -1,13 +1,13 @@
 import { data } from "./Data.js";
 export class ShowCards{
   static showCards(){
+    this.addItemHtml(data);
+  }
+
+  static addItemHtml(data){
     const cardsContainer = document.querySelector(".products-wrapper");
     cardsContainer.innerHTML = "";
 
-    this.addItemHtml(cardsContainer);
-  }
-
-  static addItemHtml(cardsContainer){
     data.forEach(item => {
       cardsContainer.innerHTML += `
         <div class="product-card hidden">

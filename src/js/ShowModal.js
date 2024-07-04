@@ -9,7 +9,7 @@ export class ShowModal{
         const modal = document.querySelector(".modal-product-wrapper");
         const modalContainer = document.querySelector(".modal-product-wrapper-container");
 
-        modalContainer.style.animation = "slideLeft .4s ease-in forwards"
+        modalContainer.style.animation = "slideLeft .4s ease-in forwards";
         modal.classList.toggle("open");
 
         this.modalConstructor(event.target);

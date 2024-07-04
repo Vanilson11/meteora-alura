@@ -2,6 +2,7 @@ import { MenuBurguer } from "./js/MenuBurguer.js";
 import { ShowModal } from "./js/ShowModal.js";
 import { ShowCards } from "./js/ShowCards.js";
 import { SendPedido } from "./js/SendPedido.js";
+import { FilterCategorie } from "./js/FilterCategorie.js";
 
 MenuBurguer.btnOpenMenuBurguer();
 MenuBurguer.closeMenuBurguer();
@@ -27,3 +28,5 @@ elements.forEach(element => myObserver.observe(element));
 
 const newPedido = new SendPedido();
 newPedido.setEvent();
+
+FilterCategorie.addEventFilter();
