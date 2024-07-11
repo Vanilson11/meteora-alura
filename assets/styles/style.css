@@ -116,7 +116,25 @@ header .logo{
   height: 1.8rem;
 }
 
-header .icons-menu-burguer{
+header .icons-wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.8rem;
+}
+
+header .icons-wrapper .icon-cart{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 1.9rem;
+  color: var(--icons-color);
+
+  cursor: pointer; 
+}
+
+header .icons-wrapper .icons-menu-burguer{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -468,7 +486,8 @@ header .icons-menu-burguer{
 }
 
 .modal-product-wrapper.open,
-.modal-notification.open{
+.modal-notification.open,
+.cart-container.open{
   opacity: 1;
   visibility: visible;
 }
@@ -994,6 +1013,9 @@ footer p{
   position: fixed;
   top: 0;
   left: 0;
+
+  opacity: 0;
+  visibility: hidden;
 
   z-index: 99;
 }
