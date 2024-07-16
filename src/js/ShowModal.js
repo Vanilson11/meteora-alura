@@ -17,7 +17,7 @@ export class ShowModal{
 
         this.modalConstructor(event.target);
         new SendPedido().setEvent();
-        ShowCart.addToCart();
+        //ShowCart.addToCart();
       });
     });
   }

@@ -27,50 +27,44 @@ export class ShowCart{
         })
     }
 
-    static addToCart(){
-        const btnAddCart = document.querySelector("#addToCart");
-        btnAddCart.addEventListener("click", (event) => {
-            event.preventDefault();
-            const itemName = event.target.getAttribute("data-name");
+    static addToCart(itemName){
+        const item = data.find(item => item.name === itemName);
 
-            const item = data.find(item => item.name === itemName);
+        const itemExists = this.cart.findIndex(cartItem => cartItem.id === item.id);
 
-            const itemExists = this.cart.findIndex(cartItem => cartItem.id === item.id);
-
-            if(itemExists !== -1){
-                Toastify({
-                    text: "Item já adicionado ao carrinho!",
-                    duration: 3000,
-                    close: true,
-                    gravity: "top",
-                    position: "right",
-                    stopOnFocus: true,
-                    style: {
-                      background: "#FF3131",
-                    },
-                }).showToast();
-                
-                return;
-            }
-
-            this.cart.push(item);
-
+        if(itemExists !== -1){
             Toastify({
-                text: "Item adicionado ao carrinho!",
+                text: "Item já adicionado ao carrinho!",
                 duration: 3000,
                 close: true,
                 gravity: "top",
                 position: "right",
                 stopOnFocus: true,
                 style: {
-                  background: "#50C878",
+                    background: "#FF3131",
                 },
             }).showToast();
+            
+            return;
+        }
 
-            const uptade = new ShowCart();
-            uptade.updateCart();
-            uptade.removeItemFromCart();
-        });
+        this.cart.push(item);
+
+        Toastify({
+            text: "Item adicionado ao carrinho!",
+            duration: 3000,
+            close: true,
+            gravity: "top",
+            position: "right",
+            stopOnFocus: true,
+            style: {
+                background: "#50C878",
+            },
+        }).showToast();
+
+        const uptade = new ShowCart();
+        uptade.updateCart();
+        uptade.removeItemFromCart();
     }
 
     updateCart(){
@@ -85,6 +79,10 @@ export class ShowCart{
             totalElement.textContent = soma.toFixed(2);
         }
 
+        this.createElementsCart(itensCart, soma, totalElement);
+    }
+
+    createElementsCart(itensCart, soma, totalElement){
         const cartProductsContainer = document.querySelector(".cart-products");
         cartProductsContainer.innerHTML = "";
 
@@ -97,15 +95,19 @@ export class ShowCart{
                     </div>
                     <div class="product-info">
                         <h4>${item.name}</h4>
+                        <span>Tamanho: M</span>
+                        <span>Cor: Branco</span>
                         <span id="price-produ-cart">R$ ${item.price},00</span>
-                        <div class="quantity-controls">
-                            <button class="decrement">-</button>
-                            <span>1</span>
-                            <button class="increment">+</button>
-                        </div>
                     </div>
                 </div>
-                <button class="remove-product" data-name="${item.name}">Remover</button>
+                <div class="buttons-container">
+                    <button class="remove-product" data-name="${item.name}">Remover</button>
+                    <div class="quantity-controls">
+                        <button class="decrement">-</button>
+                        <span>1</span>
+                        <button class="increment">+</button>
+                    </div>
+                </div>
             </div>
             `
 

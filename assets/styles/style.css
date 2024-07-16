@@ -1150,31 +1150,42 @@ footer p{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: .8rem;
+  gap: .4rem;
 }
 
 .cart-product-details .product-info h4{
   font-family: var(--ff-principal);
   font-weight: 600;
-  font-size: 1.6rem;
-  line-height: 2.3rem;
+  font-size: 1.3rem;
 }
 
 .cart-product-details .product-info span{
   font-family: var(--ff-principal);
-  font-weight: 600;
-  font-size: 1.4rem;
-  line-height: 2.3rem;
+  font-size: 1rem;
 }
 
-.product-info .quantity-controls{
+.cart-product-details .product-info #price-produ-cart{
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.cart-card .buttons-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  
+  height: 100%;
+}
+
+.cart-card .buttons-container .quantity-controls{
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
-.product-info .quantity-controls .decrement,
-.product-info .quantity-controls .increment{
+.quantity-controls .decrement,
+.quantity-controls .increment{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1183,7 +1194,7 @@ footer p{
   color: #7426fa;
 
   font-weight: 600;
-  font-size: 1.4rem;
+  font-size: 1rem;
 
   padding: 0 1rem;
 
@@ -1191,6 +1202,12 @@ footer p{
   border-radius: .8rem;
 
   transition: all .2s ease-in;
+}
+
+.quantity-controls span{
+  font-family: var(--ff-principal);
+  font-weight: 600;
+  font-size: 1.2rem;
 }
 
 .product-info .quantity-controls .decrement:hover,

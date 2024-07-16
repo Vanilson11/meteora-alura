@@ -1,3 +1,5 @@
+import { ShowCart } from "./ShowCart.js";
+
 export class SendPedido{
   dataColor;
   dataSize;
@@ -8,15 +10,27 @@ export class SendPedido{
 
     form.addEventListener("submit", (event) => {
       event.preventDefault();
+      let tagNameEvent = event.submitter.tagName;
+
+      if(tagNameEvent === "INPUT"){
+        const inputsData = document.querySelectorAll("#form-modal #inData");
       
-      const inputsData = document.querySelectorAll("#form-modal #inData");
+        this.getElementsValues(inputsData);
+        
+        const btnSend = document.querySelector(".btn-send");
+        this.addItem(btnSend);
       
-      this.getElementsValues(inputsData);
+        this.send();
+      }
+
+      if(tagNameEvent === "BUTTON"){
+        const inputsData = document.querySelectorAll("#form-modal #inData");
       
-      const btnSend = document.querySelector(".btn-send");
-      this.addItem(btnSend);
-    
-      this.send();
+        this.getElementsValues(inputsData);
+        
+        const itemName = event.submitter.getAttribute("data-name");
+        ShowCart.addToCart(itemName);
+      }
     });
   }
 
