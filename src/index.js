@@ -10,12 +10,6 @@ MenuBurguer.closeMenuBurguer();
 
 ShowCards.showCards();
 
-ShowModal.showModalProduct();
-ShowModal.closeModalProduct();
-ShowModal.openModalNotification();
-
-ShowCart.openCart();
-
 const elements = document.querySelectorAll(".hidden");
 const myObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -29,7 +23,15 @@ const myObserver = new IntersectionObserver((entries) => {
 
 elements.forEach(element => myObserver.observe(element));
 
-const newPedido = new SendPedido();
-newPedido.setEvent();
+ShowModal.showModalProduct();
+ShowModal.closeModalProduct();
+
+//const newPedido = new SendPedido();
+//newPedido.setEvent();
+
+ShowModal.openModalNotification();
+
+ShowCart.openCart();
+
 
 FilterCategorie.addEventFilter();

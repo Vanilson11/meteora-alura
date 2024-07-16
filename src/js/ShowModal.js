@@ -1,3 +1,6 @@
+import { SendPedido } from "./SendPedido.js";
+import { ShowCart } from "./ShowCart.js";
+
 export class ShowModal{
   static showModalProduct(){
     const btnSeeMore = document.querySelectorAll("#seeMore");
@@ -13,6 +16,8 @@ export class ShowModal{
         modal.classList.toggle("open");
 
         this.modalConstructor(event.target);
+        new SendPedido().setEvent();
+        ShowCart.addToCart();
       });
     });
   }
@@ -75,13 +80,16 @@ export class ShowModal{
               </div>
             </div>
           </fieldset>
-          <input 
-            class="btn-send"
-            type="submit" 
-            value="Comprar agora"
-            data-name="${btnTarget.dataset.name}"
-            data-price="${btnTarget.dataset.price}"
-          />
+          <div class="form-btns-wrapper">
+            <input 
+              class="btn-send"
+              type="submit" 
+              value="Comprar agora"
+              data-name="${btnTarget.dataset.name}"
+              data-price="${btnTarget.dataset.price}"
+            />
+            <button id="addToCart" data-name="${btnTarget.dataset.name}">Adicionar à Sacola</button>
+          </div>
         </form>
       </div>
     `;

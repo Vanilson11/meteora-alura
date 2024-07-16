@@ -4,18 +4,18 @@ export class SendPedido{
   item = [];
 
   setEvent(){
-    const modalContainer = document.querySelector(".modal-product-wrapper");
+    const form = document.querySelector("#form-modal");
 
-    modalContainer.addEventListener("submit", (event) => {
+    form.addEventListener("submit", (event) => {
       event.preventDefault();
-      const dataInput = event.target.inData;
       
-      this.getElementsValues(dataInput);
-  
-      const btnSend = modalContainer.querySelector(".btn-send");
+      const inputsData = document.querySelectorAll("#form-modal #inData");
       
+      this.getElementsValues(inputsData);
+      
+      const btnSend = document.querySelector(".btn-send");
       this.addItem(btnSend);
-  
+    
       this.send();
     });
   }

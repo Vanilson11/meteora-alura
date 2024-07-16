@@ -770,6 +770,13 @@ header .icons-wrapper .icons-menu-burguer{
   color: #212529;
 }
 
+#form-modal .form-btns-wrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+}
+
 #form-modal input[type=submit]{
   display: flex;
   justify-content: center;
@@ -778,7 +785,7 @@ header .icons-wrapper .icons-menu-burguer{
   background-color: var(--btn-color);
   color: #FFFFFF;
 
-  width: 18rem;
+  /* width: 18rem; */
   padding: .9rem 1.6rem;
 
   border: none;
@@ -786,6 +793,30 @@ header .icons-wrapper .icons-menu-burguer{
   cursor: pointer;
 
   transition: all .2s ease-in-out;
+}
+
+#form-modal #addToCart{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  background: none;
+  color: #7426fa;
+
+  font-family: var(--ff-principal);
+  font-size: 1.5rem;
+  font-weight: 600;
+
+  padding: .9rem 1.6rem;
+
+  border: 1px solid #7426fa;
+
+  transition: all .2s ease-in;
+}
+
+#form-modal #addToCart:hover{
+  background-color: #7426fa;
+  color: #FFFFFF;
 }
 
 form input[type=submit]:hover{
