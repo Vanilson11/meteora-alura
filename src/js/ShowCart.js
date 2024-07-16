@@ -9,7 +9,7 @@ export class ShowCart{
             const cartContentElement = document.querySelector(".cart-content");
 
             cartElement.classList.add("open");
-            cartContentElement.style.animation = "slideLeft .4s ease-in forwards";
+            cartContentElement.style.animation = "slideRight .4s ease-in forwards";
         });
 
         const closeCart = new ShowCart();

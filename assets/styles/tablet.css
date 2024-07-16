@@ -8,6 +8,9 @@
 }
 
 @media (min-width: 768px) {
+  header{
+    gap: 3rem;
+  }
   #form-mobile{
     display: none;
   }
@@ -17,7 +20,7 @@
     display: flex;
   }
 
-  header .icons-menu-burguer{
+  header .icons-wrapper .icons-menu-burguer{
     display: none;
   }
 
@@ -56,6 +59,8 @@
     justify-content: center;
     align-items: center;
     gap: 1.6rem;
+
+    margin-left: auto;
   }
 
   #form-desk .search-product-name-desk{
@@ -194,6 +199,24 @@
     display: flex;
     flex-direction: row;
     gap: .3rem;
+  }
+
+  .cart-container{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .cart-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    height: 100%;
+  }
+
+  .cart-products{
+    margin-bottom: auto;
   }
 }
 
