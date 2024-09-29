@@ -1,7 +1,7 @@
 import { SendPedido } from "./SendPedido.js";
-import { ShowCart } from "./ShowCart.js";
 
 export class ShowModal{
+  static btnTarget;
   static showModalProduct(){
     const btnSeeMore = document.querySelectorAll("#seeMore");
 
@@ -15,9 +15,11 @@ export class ShowModal{
         modalContainer.style.animation = "slideLeft .4s ease-in forwards";
         modal.classList.toggle("open");
 
-        this.modalConstructor(event.target);
-        new SendPedido().setEvent();
-        //ShowCart.addToCart();
+        this.btnTarget = event.target;
+
+        this.modalConstructor(this.btnTarget);
+
+        SendPedido.setEvent();
       });
     });
   }
@@ -26,7 +28,7 @@ export class ShowModal{
     const modalProductContent = document.querySelector(".modal-product-content");
     modalProductContent.innerHTML = `
       <div class="modal-product-img">
-        <img src="${btnTarget.dataset.img}" alt="">
+        <img src="${btnTarget.dataset.img}" alt=""/>
       </div>
       <div class="modal-product-options">
         <div class="modal-product-description">
@@ -93,7 +95,6 @@ export class ShowModal{
         </form>
       </div>
     `;
-    //sendPedido();
   }
 
   static closeModalProduct(){

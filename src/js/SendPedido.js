@@ -1,11 +1,12 @@
 import { ShowCart } from "./ShowCart.js";
+import { ShowModal } from "./ShowModal.js";
 
 export class SendPedido{
   dataColor;
   dataSize;
   item = [];
 
-  setEvent(){
+  static setEvent(){
     const form = document.querySelector("#form-modal");
 
     form.addEventListener("submit", (event) => {
@@ -14,22 +15,27 @@ export class SendPedido{
 
       if(tagNameEvent === "INPUT"){
         const inputsData = document.querySelectorAll("#form-modal #inData");
-      
-        this.getElementsValues(inputsData);
+        const callMethods = new SendPedido();
+        callMethods.getElementsValues(inputsData);
         
         const btnSend = document.querySelector(".btn-send");
-        this.addItem(btnSend);
+        SendPedido.addItem(btnSend);
       
-        this.send();
+        callMethods.send();
       }
 
       if(tagNameEvent === "BUTTON"){
         const inputsData = document.querySelectorAll("#form-modal #inData");
+        const callMethods = new SendPedido();
       
-        this.getElementsValues(inputsData);
+        callMethods.getElementsValues(inputsData);
+
+        const btnSend = document.querySelector(".btn-send");
+        callMethods.addItem(btnSend);
         
-        const itemName = event.submitter.getAttribute("data-name");
-        ShowCart.addToCart(itemName);
+        ShowCart.addToCart(callMethods.item);
+
+        return;
       }
     });
   }
@@ -52,14 +58,16 @@ export class SendPedido{
   addItem(btn){
     this.item.push({
       name: btn.getAttribute("data-name"),
+      img: ShowModal.btnTarget.getAttribute("data-img"),
       color: this.dataColor,
       size: this.dataSize,
-      price: btn.getAttribute("data-price")
+      price: Number(btn.getAttribute("data-price")),
+      qty: 1
     });
   }
 
   send(){
-    const message = this.item.map(item => {
+    const message = SendPedido.item.map(item => {
       return (
         ` Nome: ${item.name}, Cor: ${item.color}, Tamanho: ${item.size}, Preço: R$ ${item.price},00 | 
         `

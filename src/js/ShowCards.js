@@ -28,6 +28,7 @@ export class ShowCards{
               <button id="seeMore" 
                 data-img="${item.img}"
                 data-name="${item.name}"
+                data-id="${item.id}"
                 data-description="${item.description}"
                 data-price="${item.price}"
               >

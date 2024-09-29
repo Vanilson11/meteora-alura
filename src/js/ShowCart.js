@@ -1,7 +1,7 @@
-import { data } from "./Data.js";
-
 export class ShowCart{
     static cart = [];
+    soma = 0;
+    somaTotal = this.soma;
     static openCart(){
         const btnOpenCart = document.querySelector(".icon-cart");
         btnOpenCart.addEventListener("click", (event) => {
@@ -10,6 +10,18 @@ export class ShowCart{
 
             cartElement.classList.add("open");
             cartContentElement.style.animation = "slideRight .4s ease-in forwards";
+
+            if(ShowCart.cart.length == 0){
+                const cartProductsContainer = document.querySelector(".cart-products");
+                cartProductsContainer.innerHTML = `
+                    <div class="cart-empty-container">
+                        <div class="empty-icon">
+                            <i class="ph ph-warning-circle"></i>
+                            <h3>Seu carrinho está vazio!</h3>
+                        </div>
+                    </div>
+                `
+            }
         });
 
         const closeCart = new ShowCart();
@@ -27,44 +39,20 @@ export class ShowCart{
         })
     }
 
-    static addToCart(itemName){
-        const item = data.find(item => item.name === itemName);
-
-        const itemExists = this.cart.findIndex(cartItem => cartItem.id === item.id);
-
-        if(itemExists !== -1){
+    static addToCart(itens){
+        itens.forEach(item => {
             Toastify({
-                text: "Item já adicionado ao carrinho!",
+                text: `${item.name} Adicionado ao carrinho!`,
                 duration: 3000,
                 close: true,
                 gravity: "top",
                 position: "right",
                 stopOnFocus: true,
                 style: {
-                    background: "#FF3131",
+                  background: "linear-gradient(to right, #00b09b, #96c93d)",
                 },
-            }).showToast();
-            
-            return;
-        }
-
-        this.cart.push(item);
-
-        Toastify({
-            text: "Item adicionado ao carrinho!",
-            duration: 3000,
-            close: true,
-            gravity: "top",
-            position: "right",
-            stopOnFocus: true,
-            style: {
-                background: "#50C878",
-            },
-        }).showToast();
-
-        const uptade = new ShowCart();
-        uptade.updateCart();
-        uptade.removeItemFromCart();
+              }).showToast();
+        });
     }
 
     updateCart(){
@@ -72,19 +60,34 @@ export class ShowCart{
 
         const totalElement = document.querySelector("#total-price");
 
-        let soma = 0;
+        this.soma = 0;
 
         if(itensCart.length == 0){
-            soma = 0;
-            totalElement.textContent = soma.toFixed(2);
+            const cartProductsContainer = document.querySelector(".cart-products");
+            cartProductsContainer.innerHTML = `
+                <div class="cart-empty-container">
+                    <div class="empty-icon">
+                        <i class="ph ph-warning-circle"></i>
+                        <h3>Seu carrinho está vazio!</h3>
+                    </div>
+                </div>
+            `
+
+            this.soma = 0;
+            totalElement.textContent = this.soma.toFixed(2);
+
+            return;
+
         }
 
-        this.createElementsCart(itensCart, soma, totalElement);
+        this.createElementsCart(itensCart, totalElement);
     }
 
-    createElementsCart(itensCart, soma, totalElement){
+    createElementsCart(itensCart, totalElement){
         const cartProductsContainer = document.querySelector(".cart-products");
         cartProductsContainer.innerHTML = "";
+
+        let newPrice = 0;
 
         itensCart.forEach(item => {
             cartProductsContainer.innerHTML += `
@@ -95,25 +98,29 @@ export class ShowCart{
                     </div>
                     <div class="product-info">
                         <h4>${item.name}</h4>
-                        <span>Tamanho: M</span>
-                        <span>Cor: Branco</span>
+                        <span>Tamanho: ${item.size}</span>
+                        <span>Cor: ${item.color}</span>
                         <span id="price-produ-cart">R$ ${item.price},00</span>
                     </div>
                 </div>
                 <div class="buttons-container">
                     <button class="remove-product" data-name="${item.name}">Remover</button>
                     <div class="quantity-controls">
-                        <button class="decrement">-</button>
-                        <span>1</span>
-                        <button class="increment">+</button>
+                        <button class="decrement" data-name="${item.name}">-</button>
+                        <span class="item-qty">${item.qty}</span>
+                        <button class="increment" data-name="${item.name}">+</button>
                     </div>
                 </div>
             </div>
             `
 
-            soma+= item.price;
+            newPrice = item.price * item.qty;
+            this.soma+= newPrice;
+            this.somaTotal = this.soma;
 
-            totalElement.textContent = soma.toFixed(2);
+            totalElement.textContent = this.somaTotal.toFixed(2);
+
+            this.handleQty();
             
         });
     }
@@ -124,16 +131,43 @@ export class ShowCart{
         cartProductsContainer.addEventListener("click", (event) => {
             if(event.target.classList.contains("remove-product")){
                 const itemName = event.target.getAttribute("data-name");
-
-                const item = data.find(item => item.name === itemName);
-
-                const indexItem = ShowCart.cart.findIndex(cartItem => cartItem.id === item.id);
+                
+                const indexItem = ShowCart.cart.findIndex(cartItem => cartItem.name === itemName);
 
                 if(indexItem !== -1){
                     ShowCart.cart.splice(indexItem, 1);
                     this.updateCart();
                 }
             }
+        });
+    }
+
+    handleQty(){
+        const btnsQty = document.querySelectorAll(".quantity-controls button");
+        btnsQty.forEach(btn => {
+            btn.addEventListener("click", (event) => {
+                if(event.target.classList.contains("increment")){
+                    const itemName = event.target.getAttribute("data-name");
+                    const item = ShowCart.cart.find(item => item.name === itemName);
+
+                    item.qty++;
+                    
+                    this.updateCart();
+                }
+
+                if(event.target.classList.contains("decrement")){
+                    const itemName = event.target.getAttribute("data-name");
+                    const item = ShowCart.cart.find(item => item.name === itemName);
+
+                    if(item.qty === 1){
+                        return;
+                    } else{
+                        item.qty--;
+
+                        this.updateCart();
+                    }
+                }
+            });
         });
     }
 }
