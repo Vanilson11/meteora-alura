@@ -19,7 +19,7 @@ export class SendPedido{
         callMethods.getElementsValues(inputsData);
         
         const btnSend = document.querySelector(".btn-send");
-        SendPedido.addItem(btnSend);
+        callMethods.addItem(btnSend);
       
         callMethods.send();
       }
@@ -33,7 +33,7 @@ export class SendPedido{
         const btnSend = document.querySelector(".btn-send");
         callMethods.addItem(btnSend);
         
-        ShowCart.addToCart(callMethods.item);
+        //ShowCart.addToCart(callMethods.item);
 
         return;
       }
@@ -56,18 +56,20 @@ export class SendPedido{
   }
 
   addItem(btn){
-    this.item.push({
+    const produto = {
       name: btn.getAttribute("data-name"),
       img: ShowModal.btnTarget.getAttribute("data-img"),
       color: this.dataColor,
       size: this.dataSize,
       price: Number(btn.getAttribute("data-price")),
       qty: 1
-    });
+    }
+
+    ShowCart.addToCart(produto);
   }
 
   send(){
-    const message = SendPedido.item.map(item => {
+    const message = this.item.map(item => {
       return (
         ` Nome: ${item.name}, Cor: ${item.color}, Tamanho: ${item.size}, Preço: R$ ${item.price},00 | 
         `

@@ -39,20 +39,53 @@ export class ShowCart{
         })
     }
 
-    static addToCart(itens){
-        itens.forEach(item => {
-            Toastify({
-                text: `${item.name} Adicionado ao carrinho!`,
-                duration: 3000,
-                close: true,
-                gravity: "top",
-                position: "right",
-                stopOnFocus: true,
-                style: {
-                  background: "linear-gradient(to right, #00b09b, #96c93d)",
-                },
-              }).showToast();
-        });
+    static addToCart(produto){
+        const produtosPorNome = this.cart.filter(item => item.name === produto.name);
+
+        if(produtosPorNome.length == 0){
+            this.adicionarProduto(produto);
+            return;
+        } else{
+            const sizeColorIgual = this.cart.filter(item => item.name === produto.name && item.color === produto.color && item.size === produto.size);
+            
+            if(sizeColorIgual.length == 0){
+                this.adicionarProduto(produto);
+                return;
+            } else{
+                Toastify({
+                    text: "Este produto já está no carrinho com esse tamanho e cor.",
+                    duration: 3000,
+                    close: true,
+                    gravity: "top",
+                    position: "right",
+                    stopOnFocus: true,
+                    style: {
+                      background: "#F72464",
+                    },
+                }).showToast();
+
+                return;
+            }
+        }
+    }
+
+    static adicionarProduto(produto){
+        this.cart.push(produto);
+
+        Toastify({
+            text: `${produto.name} adicionado ao carrinho.`,
+            duration: 3000,
+            close: true,
+            gravity: "top",
+            position: "right",
+            stopOnFocus: true,
+            style: {
+                background: "#6C48C5",
+            },
+        }).showToast();
+
+        const callUpdateCart = new ShowCart();
+        callUpdateCart.updateCart();
     }
 
     updateCart(){
@@ -77,16 +110,16 @@ export class ShowCart{
             totalElement.textContent = this.soma.toFixed(2);
 
             return;
-
         }
 
         this.createElementsCart(itensCart, totalElement);
+        this.removeItemFromCart();
     }
 
     createElementsCart(itensCart, totalElement){
         const cartProductsContainer = document.querySelector(".cart-products");
         cartProductsContainer.innerHTML = "";
-
+        
         let newPrice = 0;
 
         itensCart.forEach(item => {
@@ -131,7 +164,7 @@ export class ShowCart{
         cartProductsContainer.addEventListener("click", (event) => {
             if(event.target.classList.contains("remove-product")){
                 const itemName = event.target.getAttribute("data-name");
-                
+
                 const indexItem = ShowCart.cart.findIndex(cartItem => cartItem.name === itemName);
 
                 if(indexItem !== -1){
