@@ -148,9 +148,9 @@ export class ShowCart{
                 <div class="buttons-container">
                     <button class="remove-product" data-name="${item.name}" data-color="${item.color}" data-size="${item.size}">Remover</button>
                     <div class="quantity-controls">
-                        <button class="decrement" data-name="${item.name}">-</button>
+                        <button class="decrement" data-name="${item.name}" data-color="${item.color}" data-size="${item.size}">-</button>
                         <span class="item-qty">${item.qty}</span>
-                        <button class="increment" data-name="${item.name}">+</button>
+                        <button class="increment" data-name="${item.name}" data-color="${item.color}" data-size="${item.size}">+</button>
                     </div>
                 </div>
             </div>
@@ -193,24 +193,38 @@ export class ShowCart{
             btn.addEventListener("click", (event) => {
                 if(event.target.classList.contains("increment")){
                     const itemName = event.target.getAttribute("data-name");
-                    const item = ShowCart.cart.find(item => item.name === itemName);
+                    const itemColor = event.target.getAttribute("data-color");
+                    const itemSize = event.target.getAttribute("data-size");
 
-                    item.qty++;
+                    const item = ShowCart.filtrarPorNomeTamCor(itemName, itemColor, itemSize);
                     
-                    this.updateCart();
+                    item.forEach(p => {
+                        p.qty++;
+
+                        this.updateCart();
+                    });
+                    
+                    return;
                 }
 
                 if(event.target.classList.contains("decrement")){
                     const itemName = event.target.getAttribute("data-name");
-                    const item = ShowCart.cart.find(item => item.name === itemName);
+                    const itemColor = event.target.getAttribute("data-color");
+                    const itemSize = event.target.getAttribute("data-size");
 
-                    if(item.qty === 1){
-                        return;
-                    } else{
-                        item.qty--;
+                    const item = ShowCart.filtrarPorNomeTamCor(itemName, itemColor, itemSize);
 
-                        this.updateCart();
-                    }
+                    item.forEach(p => {
+                        if(p.qty === 1){
+                            return;
+                        } else{
+                            p.qty--;
+    
+                            this.updateCart();
+                        }
+                    });
+                    
+                    return;
                 }
             });
         });
