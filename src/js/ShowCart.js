@@ -4,7 +4,7 @@ export class ShowCart{
     somaTotal = this.soma;
     static openCart(){
         const btnOpenCart = document.querySelector(".icon-cart");
-        btnOpenCart.addEventListener("click", (event) => {
+        btnOpenCart.addEventListener("click", () => {
             const cartElement = document.querySelector(".cart-container");
             const cartContentElement = document.querySelector(".cart-content");
 
@@ -13,19 +13,23 @@ export class ShowCart{
 
             if(ShowCart.cart.length == 0){
                 const cartProductsContainer = document.querySelector(".cart-products");
-                cartProductsContainer.innerHTML = `
-                    <div class="cart-empty-container">
-                        <div class="empty-icon">
-                            <i class="ph ph-warning-circle"></i>
-                            <h3>Seu carrinho está vazio!</h3>
-                        </div>
-                    </div>
-                `
+                cartProductsContainer.innerHTML = this.cartEmptyHtml();
             }
         });
 
         const closeCart = new ShowCart();
         closeCart.closeModalCart();
+    }
+
+    static cartEmptyHtml(){
+        return `
+            <div class="cart-empty-container">
+                <div class="empty-icon">
+                    <i class="ph ph-warning-circle"></i>
+                    <h3>Seu carrinho está vazio!</h3>
+                </div>
+            </div>
+        `
     }
 
     closeModalCart(){
@@ -99,23 +103,17 @@ export class ShowCart{
 
     updateCart(){
         const itensCart = ShowCart.cart;
-
         const totalElement = document.querySelector("#total-price");
 
         this.soma = 0;
 
         if(itensCart.length == 0){
             const cartProductsContainer = document.querySelector(".cart-products");
-            cartProductsContainer.innerHTML = `
-                <div class="cart-empty-container">
-                    <div class="empty-icon">
-                        <i class="ph ph-warning-circle"></i>
-                        <h3>Seu carrinho está vazio!</h3>
-                    </div>
-                </div>
-            `
+            
+            cartProductsContainer.innerHTML = ShowCart.cartEmptyHtml();
 
             this.soma = 0;
+            
             totalElement.textContent = this.soma.toFixed(2);
 
             return;
@@ -132,7 +130,21 @@ export class ShowCart{
         let newPrice = 0;
 
         itensCart.forEach(item => {
-            cartProductsContainer.innerHTML += `
+            cartProductsContainer.innerHTML += this.appendElementCart(item);
+
+            newPrice = item.price * item.qty;
+            this.soma+= newPrice;
+            this.somaTotal = this.soma;
+
+            totalElement.textContent = this.somaTotal.toFixed(2);
+
+            this.handleQty();
+            
+        });
+    }
+
+    appendElementCart(item){
+        return `
             <div class="cart-card">
                 <div class="cart-product-details">
                     <div class="cart-card-img">
@@ -154,17 +166,7 @@ export class ShowCart{
                     </div>
                 </div>
             </div>
-            `
-
-            newPrice = item.price * item.qty;
-            this.soma+= newPrice;
-            this.somaTotal = this.soma;
-
-            totalElement.textContent = this.somaTotal.toFixed(2);
-
-            this.handleQty();
-            
-        });
+        `
     }
 
     removeItemFromCart(){
