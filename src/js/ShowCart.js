@@ -192,11 +192,8 @@ export class ShowCart{
         btnsQty.forEach(btn => {
             btn.addEventListener("click", (event) => {
                 if(event.target.classList.contains("increment")){
-                    const itemName = event.target.getAttribute("data-name");
-                    const itemColor = event.target.getAttribute("data-color");
-                    const itemSize = event.target.getAttribute("data-size");
-
-                    const item = ShowCart.filtrarPorNomeTamCor(itemName, itemColor, itemSize);
+                    const { name, color, size } = event.target.dataset;
+                    const item = ShowCart.filtrarPorNomeTamCor(name, color, size);
                     
                     item.forEach(p => {
                         p.qty++;
@@ -208,11 +205,8 @@ export class ShowCart{
                 }
 
                 if(event.target.classList.contains("decrement")){
-                    const itemName = event.target.getAttribute("data-name");
-                    const itemColor = event.target.getAttribute("data-color");
-                    const itemSize = event.target.getAttribute("data-size");
-
-                    const item = ShowCart.filtrarPorNomeTamCor(itemName, itemColor, itemSize);
+                    const { name, color, size } = event.target.dataset;
+                    const item = ShowCart.filtrarPorNomeTamCor(name, color, size);
 
                     item.forEach(p => {
                         if(p.qty === 1){
