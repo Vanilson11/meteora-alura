@@ -40,13 +40,13 @@ export class ShowCart{
     }
 
     static addToCart(produto){
-        const produtosPorNome = this.cart.filter(item => item.name === produto.name);
+        const produtosPorNome = this.filtrarPorNome(produto.name);
 
         if(produtosPorNome.length == 0){
             this.adicionarProduto(produto);
             return;
         } else{
-            const sizeColorIgual = this.cart.filter(item => item.name === produto.name && item.color === produto.color && item.size === produto.size);
+            const sizeColorIgual = this.filtrarPorNomeTamCor(produto.name, produto.color, produto.size);
             
             if(sizeColorIgual.length == 0){
                 this.adicionarProduto(produto);
@@ -86,6 +86,15 @@ export class ShowCart{
 
         const callUpdateCart = new ShowCart();
         callUpdateCart.updateCart();
+    }
+
+    static filtrarPorNome(produtoNome){
+        const resultado = this.cart.filter(item => item.name === produtoNome);
+        return resultado;
+    }
+    static filtrarPorNomeTamCor(name, color, size){
+        const resultado = this.cart.filter(item => item.name === name && item.color === color && item.size === size);
+        return resultado;
     }
 
     updateCart(){
@@ -137,7 +146,7 @@ export class ShowCart{
                     </div>
                 </div>
                 <div class="buttons-container">
-                    <button class="remove-product" data-name="${item.name}">Remover</button>
+                    <button class="remove-product" data-name="${item.name}" data-color="${item.color}" data-size="${item.size}">Remover</button>
                     <div class="quantity-controls">
                         <button class="decrement" data-name="${item.name}">-</button>
                         <span class="item-qty">${item.qty}</span>
@@ -164,8 +173,11 @@ export class ShowCart{
         cartProductsContainer.addEventListener("click", (event) => {
             if(event.target.classList.contains("remove-product")){
                 const itemName = event.target.getAttribute("data-name");
+                const itemColor = event.target.getAttribute("data-color");
+                const itemSize = event.target.getAttribute("data-size");
 
-                const indexItem = ShowCart.cart.findIndex(cartItem => cartItem.name === itemName);
+                const indexItem = ShowCart.cart.findIndex(cartItem => cartItem.name === itemName && cartItem.color === itemColor 
+                    && cartItem.size === itemSize);
 
                 if(indexItem !== -1){
                     ShowCart.cart.splice(indexItem, 1);
