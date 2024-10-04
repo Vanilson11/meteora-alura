@@ -172,12 +172,9 @@ export class ShowCart{
 
         cartProductsContainer.addEventListener("click", (event) => {
             if(event.target.classList.contains("remove-product")){
-                const itemName = event.target.getAttribute("data-name");
-                const itemColor = event.target.getAttribute("data-color");
-                const itemSize = event.target.getAttribute("data-size");
-
-                const indexItem = ShowCart.cart.findIndex(cartItem => cartItem.name === itemName && cartItem.color === itemColor 
-                    && cartItem.size === itemSize);
+                const { name, color, size } = event.target.dataset;
+                const indexItem = ShowCart.cart.findIndex(cartItem => cartItem.name === name && cartItem.color === color 
+                    && cartItem.size === size);
 
                 if(indexItem !== -1){
                     ShowCart.cart.splice(indexItem, 1);
