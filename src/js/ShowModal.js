@@ -117,7 +117,7 @@ export class ShowModal{
 
       const modal = document.querySelector(".modal-notification");
 
-      modal.style.animation = "notification .4s ease-in forwards"
+      modal.style.animation = "notification .4s ease-in forwards";
       modal.classList.add('open');
 
       setTimeout(this.closeModalNotification, 4000);

@@ -4,7 +4,7 @@ import { ShowModal } from "./ShowModal.js";
 export class SendPedido{
   dataColor;
   dataSize;
-  item = [];
+  static item = [];
 
   static setEvent(){
     const form = document.querySelector("#form-modal");
@@ -14,30 +14,32 @@ export class SendPedido{
       let tagNameEvent = event.submitter.tagName;
 
       if(tagNameEvent === "INPUT"){
-        const inputsData = document.querySelectorAll("#form-modal #inData");
+        this.comprarProduto();
+
         const callMethods = new SendPedido();
-        callMethods.getElementsValues(inputsData);
-        
-        const btnSend = document.querySelector(".btn-send");
-        callMethods.addItem(btnSend);
-      
-        callMethods.send();
+        callMethods.send(SendPedido.item);
       }
 
       if(tagNameEvent === "BUTTON"){
-        const inputsData = document.querySelectorAll("#form-modal #inData");
-        const callMethods = new SendPedido();
-      
-        callMethods.getElementsValues(inputsData);
+        const produto = this.comprarProduto();
 
-        const btnSend = document.querySelector(".btn-send");
-        callMethods.addItem(btnSend);
-        
-        //ShowCart.addToCart(callMethods.item);
-
+        ShowCart.addToCart(produto);
         return;
       }
     });
+  }
+
+  static comprarProduto(){
+    const inputsData = document.querySelectorAll("#form-modal #inData");
+    const callMethods = new SendPedido();
+
+    callMethods.getElementsValues(inputsData);
+        
+    const btnSend = document.querySelector(".btn-send");
+
+    const produto = callMethods.addItem(btnSend);
+
+    return produto;
   }
 
   getElementsValues(elements){
@@ -65,11 +67,13 @@ export class SendPedido{
       qty: 1
     }
 
-    ShowCart.addToCart(produto);
+    SendPedido.item.push(produto);
+    
+    return produto;
   }
 
-  send(){
-    const message = this.item.map(item => {
+  send(produtos){
+    const message = produtos.map(item => {
       return (
         ` Nome: ${item.name}, Cor: ${item.color}, Tamanho: ${item.size}, Preço: R$ ${item.price},00 | 
         `
@@ -83,6 +87,6 @@ export class SendPedido{
 
     window.open(`https://wa.me/${phone}?text=${messageUrl}`, "_blank");
 
-    this.item = [];
+    SendPedido.item = [];
   }
 }

@@ -2,6 +2,7 @@ export class ShowCart{
     static cart = [];
     soma = 0;
     somaTotal = this.soma;
+    totalElement = document.querySelector("#total-price")
     static openCart(){
         const btnOpenCart = document.querySelector(".icon-cart");
         btnOpenCart.addEventListener("click", () => {
@@ -57,16 +58,31 @@ export class ShowCart{
                 return;
             } else{
                 Toastify({
-                    text: "Este produto já está no carrinho com esse tamanho e cor.",
+                    text: `${produto.name} adicionado ao carrinho.`,
                     duration: 3000,
                     close: true,
                     gravity: "top",
                     position: "right",
                     stopOnFocus: true,
                     style: {
-                      background: "#F72464",
+                      background: "#6C48C5",
                     },
                 }).showToast();
+
+                let newPrice = 0;
+
+                sizeColorIgual.forEach(item => {
+                    item.qty++;
+
+                    const callMethods = new ShowCart();
+
+                    newPrice = item.price * item.qty;
+                    callMethods.soma+= newPrice;
+                    callMethods.somaTotal = callMethods.soma;
+                    callMethods.totalElement.textContent = callMethods.somaTotal.toFixed(2);
+
+                    callMethods.updateCart();
+                })
 
                 return;
             }
@@ -103,7 +119,6 @@ export class ShowCart{
 
     updateCart(){
         const itensCart = ShowCart.cart;
-        const totalElement = document.querySelector("#total-price");
 
         this.soma = 0;
 
@@ -114,12 +129,12 @@ export class ShowCart{
 
             this.soma = 0;
             
-            totalElement.textContent = this.soma.toFixed(2);
+            this.totalElement.textContent = this.soma.toFixed(2);
 
             return;
         }
 
-        this.createElementsCart(itensCart, totalElement);
+        this.createElementsCart(itensCart, this.totalElement);
         this.removeItemFromCart();
     }
 
