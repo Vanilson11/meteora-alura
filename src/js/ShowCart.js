@@ -57,17 +57,7 @@ export class ShowCart{
                 this.adicionarProduto(produto);
                 return;
             } else{
-                Toastify({
-                    text: `${produto.name} adicionado ao carrinho.`,
-                    duration: 3000,
-                    close: true,
-                    gravity: "top",
-                    position: "right",
-                    stopOnFocus: true,
-                    style: {
-                      background: "#6C48C5",
-                    },
-                }).showToast();
+                this.callToast(produto);
 
                 let newPrice = 0;
 
@@ -75,15 +65,10 @@ export class ShowCart{
                     item.qty++;
 
                     const callMethods = new ShowCart();
-
-                    newPrice = item.price * item.qty;
-                    callMethods.soma+= newPrice;
-                    callMethods.somaTotal = callMethods.soma;
-                    callMethods.totalElement.textContent = callMethods.somaTotal.toFixed(2);
+                    callMethods.calcNewPrice(newPrice, item);
 
                     callMethods.updateCart();
-                })
-
+                });
                 return;
             }
         }
@@ -92,17 +77,7 @@ export class ShowCart{
     static adicionarProduto(produto){
         this.cart.push(produto);
 
-        Toastify({
-            text: `${produto.name} adicionado ao carrinho.`,
-            duration: 3000,
-            close: true,
-            gravity: "top",
-            position: "right",
-            stopOnFocus: true,
-            style: {
-                background: "#6C48C5",
-            },
-        }).showToast();
+        this.callToast(produto);
 
         const callUpdateCart = new ShowCart();
         callUpdateCart.updateCart();
@@ -115,6 +90,27 @@ export class ShowCart{
     static filtrarPorNomeTamCor(name, color, size){
         const resultado = this.cart.filter(item => item.name === name && item.color === color && item.size === size);
         return resultado;
+    }
+
+    calcNewPrice(newPrice, item){
+        newPrice = item.price * item.qty;
+        this.soma+= newPrice;
+        this.somaTotal = this.soma;
+        this.totalElement.textContent = this.somaTotal.toFixed(2);
+    }
+
+    static callToast(produto){
+        Toastify({
+            text: `${produto.name} adicionado ao carrinho.`,
+            duration: 3000,
+            close: true,
+            gravity: "top",
+            position: "right",
+            stopOnFocus: true,
+            style: {
+              background: "#6C48C5",
+            },
+        }).showToast();
     }
 
     updateCart(){
@@ -134,11 +130,11 @@ export class ShowCart{
             return;
         }
 
-        this.createElementsCart(itensCart, this.totalElement);
+        this.createElementsCart(itensCart);
         this.removeItemFromCart();
     }
 
-    createElementsCart(itensCart, totalElement){
+    createElementsCart(itensCart){
         const cartProductsContainer = document.querySelector(".cart-products");
         cartProductsContainer.innerHTML = "";
         
@@ -147,14 +143,9 @@ export class ShowCart{
         itensCart.forEach(item => {
             cartProductsContainer.innerHTML += this.appendElementCart(item);
 
-            newPrice = item.price * item.qty;
-            this.soma+= newPrice;
-            this.somaTotal = this.soma;
-
-            totalElement.textContent = this.somaTotal.toFixed(2);
+            this.calcNewPrice(newPrice, item);
 
             this.handleQty();
-            
         });
     }
 
