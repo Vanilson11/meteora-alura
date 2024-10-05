@@ -4,6 +4,10 @@ import { ShowCards } from "./js/ShowCards.js";
 import { Observer } from "./js/Observer.js";
 import { FilterCategorie } from "./js/FilterCategorie.js";
 import { ShowCart } from "./js/ShowCart.js";
+import { ScrollTop } from "./js/ScrollTop.js";
+
+ScrollTop.visibilityBtnScroll();
+ScrollTop.scrollToTopSmooth();
 
 MenuBurguer.btnOpenMenuBurguer();
 MenuBurguer.closeMenuBurguer();
