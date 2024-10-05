@@ -204,7 +204,6 @@
   .cart-container{
     display: flex;
     justify-content: flex-end;
-    align-items: center;
   }
 
   .cart-content{
@@ -216,7 +215,21 @@
   }
 
   .cart-products{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+
     margin-bottom: auto;
+
+    overflow-y: auto;
+  }
+
+  .cart-products::-webkit-scrollbar{
+    width: 1rem;/* Largura da barra de rolagem */
+  }
+
+  .cart-products{
+    scrollbar-width: 1rem;
   }
 }
 

@@ -100,7 +100,7 @@ export class ShowModal{
   static closeModalProduct(){
     const btnCloseModal = document.querySelector(".close-modal");
 
-    btnCloseModal.addEventListener("click", (event) => {
+    btnCloseModal.addEventListener("click", () => {
       const modal = document.querySelector(".modal-product-wrapper");
       const modalContainer = document.querySelector(".modal-product-wrapper-container");
 

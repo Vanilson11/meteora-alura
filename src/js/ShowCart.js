@@ -18,8 +18,9 @@ export class ShowCart{
             }
         });
 
-        const closeCart = new ShowCart();
-        closeCart.closeModalCart();
+        const callMethods = new ShowCart();
+        callMethods.updateCart();
+        callMethods.closeModalCart();
     }
 
     static cartEmptyHtml(){
@@ -120,6 +121,11 @@ export class ShowCart{
 
         if(itensCart.length == 0){
             const cartProductsContainer = document.querySelector(".cart-products");
+            cartProductsContainer.style.height = "100%";
+            cartProductsContainer.style.display = "flex";
+            cartProductsContainer.style.flexDirection = "row";
+            cartProductsContainer.style.alignItems = "center";
+            cartProductsContainer.style.justifyContent = "center";
             
             cartProductsContainer.innerHTML = ShowCart.cartEmptyHtml();
 
@@ -129,6 +135,14 @@ export class ShowCart{
 
             return;
         }
+
+        const cartProductsContainer = document.querySelector(".cart-products");
+        cartProductsContainer.style.height = "100%";
+        cartProductsContainer.style.display = "flex";
+        cartProductsContainer.style.flexDirection = "column";
+        cartProductsContainer.style.alignItems = "flex-start";
+        cartProductsContainer.style.justifyContent = "flex-start";
+
 
         this.createElementsCart(itensCart);
         this.removeItemFromCart();

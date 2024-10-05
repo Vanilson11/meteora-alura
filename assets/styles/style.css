@@ -1059,7 +1059,8 @@ footer p{
   justify-content: center;
   gap: 1rem;
 
-  min-width: 44rem;
+  min-width: 40rem;
+  height: 45rem;
 }
 
 .cart-content .cart-header{
@@ -1097,10 +1098,30 @@ footer p{
 .cart-products{
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: 1.2rem;
 
   width: 100%;
+
+  overflow-y: auto;
+}
+
+.cart-products::-webkit-scrollbar{
+  width: .8rem;/* Largura da barra de rolagem */
+}
+
+.cart-products::-webkit-scrollbar-track{
+  background: #f1f1f1;/*cor do trilho da barra de rolagem*/
+}
+
+.cart-products::-webkit-scrollbar-thumb{
+  background: var(--btn-color);/*cor do thumb da barra de rolagem*/
+  border-radius: 1rem;/*raio do thumb da barra de rolagem*/
+}
+
+/*scroll firefox*/
+.cart-products{
+  scrollbar-width: thin; /* Largura fina */
+  scrollbar-color: #9353FF #f1f1f1; /* Cor do polegar e da trilha */
 }
 
 .cart-products .cart-card{

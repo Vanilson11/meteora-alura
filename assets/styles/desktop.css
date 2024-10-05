@@ -95,4 +95,26 @@
   #form-newsletter .form-newsletter-content{
     width: 72.9rem;
   }
+
+  .cart-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    max-height: 100%;
+  }
+
+  .cart-products{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+
+    margin-bottom: auto;
+
+    overflow-y: auto;
+  }
+
+  .cart-products{
+    scrollbar-width: 1rem;
+  }
 }
